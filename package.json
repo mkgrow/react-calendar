@@ -1,0 +1,52 @@
+{
+  "name": "react-calendar-operate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.jsx",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env UMI_UI=none umi dev",
+    "dev": "npm run start:dev",
+    "pub": "npm publish",
+    "build": "umi build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/mkgrow/react-calendar.git"
+  },
+  "author": "makan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mkgrow/react-calendar/issues"
+  },
+  "homepage": "https://github.com/mkgrow/react-calendar#readme",
+  "dependencies": {
+    "antd": "^4.8.5",
+    "cross-env": "^7.0.2",
+    "moment": "^2.29.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "umi": "^3.2.27"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^17.0.0",
+    "@umijs/fabric": "^2.0.5",
+    "@umijs/plugin-blocks": "^2.0.5",
+    "@umijs/preset-ant-design-pro": "^1.0.1",
+    "@umijs/preset-react": "^1.6.19",
+    "@umijs/preset-ui": "^2.0.9"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "checkFiles": [
+    "src/**/*.js*",
+    "src/**/*.ts*",
+    "src/**/*.less",
+    "config/**/*.js*",
+    "scripts/**/*.js"
+  ]
+}

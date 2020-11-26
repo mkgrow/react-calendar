@@ -1,0 +1,41 @@
+@import "../../../../../assets/styles/variable";
+@tag-height: 26px;
+@num-height: 22px;
+
+.taskBox {
+
+  .task {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: @tag-height;
+    font-size: @font-size-sm;
+    line-height: @tag-height;
+
+    .circle {
+      width: 6px;
+      height: 6px;
+      margin-left: @margin-xs;
+      background-color: @primary-color;
+      border-radius: 50%;
+    }
+
+    .name {
+      flex: 1;
+      padding-left: @padding-xs;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .surPlusNum {
+    width: 100%;
+    height: @num-height;
+    margin-top: @margin-xss;
+    padding: 0 @padding-md;
+    color: @text-color-secondary;
+    line-height: @num-height;
+    background-color: @base-bg;
+  }
+}
