@@ -19,7 +19,6 @@ const Index = ({ date, tasks = [], handleChangeState, handleDelete, handleEdit }
   };
 
   const onChangeActivityActive = (item) => {
-    console.log('修改任务状态', item);
     handleChangeState?.(item)
   };
 

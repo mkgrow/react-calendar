@@ -1,0 +1,101 @@
+@import "../../assets/variable";
+
+.maskContent {
+  position: absolute;
+  top: 32px;
+  z-index: 99;
+  background-color: transparent;
+}
+
+.operateContent {
+  width: 340px;
+  padding: @padding-md;
+  background-color: @white;
+  border-radius: @border-radius-base * 5;
+  box-shadow: 0 0 8px 4px rgba(0, 0, 0, 0.1);
+
+  .modalTitle {
+    display: flex;
+    align-items: center;
+    font-size: @font-size-base;
+
+    .circle {
+      width: 10px;
+      height: 10px;
+      margin-right: @margin-xs - 2;
+      background-color: @primary-color;
+      border-radius: 50%;
+    }
+
+    .title {
+      flex: 1;
+      color: @primary-color;
+    }
+
+    .icon {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+
+      &.disabled {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .item {
+    margin-top: @margin-sm;
+  }
+
+  .type {
+    padding: @padding-xss @padding-xs;
+    border-radius: 3px;
+  }
+
+  .progress {
+    display: flex;
+    align-items: center;
+    margin-top: @margin-sm;
+
+    :global {
+      .ant-progress-line {
+        width: 60%;
+        margin-left: @margin-xss;
+      }
+    }
+  }
+
+  .footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: @margin-md;
+
+    :global {
+      .ant-btn {
+        width: 74px;
+        height: 32px;
+        padding: 0;
+      }
+
+      .ant-btn-danger {
+        background-color: @danger-red;
+        border-color: @danger-red;
+
+        &:hover {
+          background-color: #F4737599;
+          border-color: #F4737599;
+        }
+
+        &:active {
+          background-color: @danger-red;
+          border-color: @danger-red;
+        }
+      }
+    }
+
+    .edit {
+      margin-left: @margin-xs + 2;
+    }
+  }
+}
+

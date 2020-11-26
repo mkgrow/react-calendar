@@ -1,0 +1,47 @@
+@import "../../assets/variable";
+
+.switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: @padding-xs 0;
+  background-color: @white;
+
+  img {
+    cursor: pointer;
+  }
+
+  .arrow {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+  }
+
+  .left {
+    width: 11px;
+    height: 19px;
+    background-image: url("../../assets/images/icon_left.png");
+
+    &:hover {
+      background-image: url("../../assets/images/icon_left_selected.png");
+    }
+  }
+
+  .right {
+    width: 11px;
+    height: 19px;
+    background-image: url("../../assets/images/icon_right.png");
+
+    &:hover {
+      background-image: url("../../assets/images/icon_right_selected.png");
+    }
+  }
+
+  .date {
+    margin: 0 @margin-lg + 4;
+    color: @text-gray;
+    font-size: @font-size-sm * 2;
+    line-height: 36px;
+  }
+}

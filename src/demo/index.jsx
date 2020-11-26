@@ -1,7 +1,8 @@
-import React from "react";
-import ReactCalendar from 'react-calendar';
+import React, {useState} from "react";
+import { Modal } from 'antd';
 import moment from "moment";
-
+import ReactCalendar from 'react-calendar-operate';
+import MonthSwitch from "../components/MonthSwitch";
 
 const data = [
     {
@@ -13,7 +14,7 @@ const data = [
         industry: "ACCESSORY",
         isActive: true,
         isTemplate: false,
-        name: "驾驶舱活动名称测试测试测试测试",
+        name: "Demo",
         organization: null,
         plans: [{id: 6690, name: "驾驶舱测试-12", color: null, startAt: 1605927420219, endAt: 1605927420219}],
         remark: null,
@@ -24,27 +25,43 @@ const data = [
 ];
 
 const Demo = () => {
+    const [monthDate, setMonthDate] = useState(moment());
+
+    const handleMonthChange = (selectedDate) => {
+        setMonthDate(selectedDate)
+    };
+
 
     const handleChangeState = (params) => {
-        console.log(params)
-    }
+        console.log('修改状态', params)
+    };
 
     const handleDelete = (params) => {
-        console.log(params)
-    }
+        Modal.confirm({
+            title: `是否删除${params?.name}活动？`,
+            okText: '确认',
+            cancelText: '取消',
+            onOk: () => {
+                console.log('执行删除', params)
+            }
+        });
+    };
 
     const handleEdit = (params) => {
-        console.log(params)
-    }
+        console.log('跳转编辑界面', params)
+    };
 
     return (
-        <ReactCalendar
-            date={moment()}
-            tasks={data}
-            handleChangeState={handleChangeState}
-            handleDelete={handleDelete}
-            handleEdit={handleEdit}
-        />
+        <>
+            <MonthSwitch defaultDate={monthDate} onChange={handleMonthChange} />
+            <ReactCalendar
+                date={monthDate}
+                tasks={data}
+                handleChangeState={handleChangeState}
+                handleDelete={handleDelete}
+                handleEdit={handleEdit}
+            />
+        </>
     )
 };
 
