@@ -5,7 +5,7 @@ import Holiday from "./Holiday";
 import OperateModal from "./OperateModal";
 import Task from "./Task";
 import List from "./List";
-import styles from "../../Calendar.less";
+import styles from "../Calendar.less";
 
 const Day = ({ date, tasks, number, daysNumber = 0, month, day, lunar, index, selectedTask, hoverTask, onClick, onHover, currentDayIndex, onDelete, onEdit, onCancel }) => {
   const [props, methods] = useDay({ tasks, date, month, daysNumber, index });
