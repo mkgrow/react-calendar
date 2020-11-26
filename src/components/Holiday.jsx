@@ -1,6 +1,6 @@
 import React from "react";
 import config from "../utils/holidayConfig";
-import styles from "../../index.less";
+import styles from "../../Calendar.less";
 
 const Holiday = ({ year, day, month, index }) => {
   const holiday = config[year] || [];

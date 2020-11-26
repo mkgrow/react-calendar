@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../index.less";
+import styles from "../../Calendar.less";
 
 const Header = () => {
   const weekday = ['一', '二', '三', '四', '五', '六', '日'];
