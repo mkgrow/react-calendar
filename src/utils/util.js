@@ -56,7 +56,8 @@ export function getMothType(createdAt, date) {
   const currentMonthNum = getMonth(date);
   if (monthNum < currentMonthNum) return '上月';
   if (monthNum > currentMonthNum) return '下月';
-  return '当月';
+  if (monthNum === currentMonthNum) return '当月';
+  return '';
 };
 
 export function getProgressValue({ startAt, endAt }, decimalPlaces = 2) {
@@ -65,17 +66,18 @@ export function getProgressValue({ startAt, endAt }, decimalPlaces = 2) {
   return currentDays > 0 && activityDays > 0 ? ((currentDays / activityDays) * 100).toFixed(decimalPlaces) : 0;
 }
 
-export function formatCalendarData(date, source = []) {
+export function formatCalendarData(date, months, source = []) {
   const days = getCalendar(date);
-
   const data = source.map(({ createdAt, startAt, endAt, ...rest }) => {
     const start = dateToDay(startAt);
     const end = dateToDay(endAt);
     const startIndex = days.findIndex(it => it.day === parseInt(start, 10) && it.month === getMothType(startAt, date));
     const endIndex = days.findIndex(it => it.day === parseInt(end, 10) && it.month === getMothType(endAt, date));
-    return { ...rest, start: startIndex, end: endIndex, startAt, endAt }
+    return { ...rest, start: startIndex, end: endIndex, startAt, endAt, startMonth: getMothType(startAt, date), endMonth: getMothType(endAt, date) }
   });
-  return data || []
+
+  const currentMonth = getMonth(date);
+  return data.filter(({ start, end, startMonth, endMonth }) => (start !== -1 || end !== -1) && (months[startMonth] === currentMonth || months[endMonth] === currentMonth));
 }
 
 export function formatWeekCalendarData(date, source) {

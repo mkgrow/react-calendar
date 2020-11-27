@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {useEffect, useState} from "react";
 import moment from "moment";
 import { formatDate, getMonth } from "../../utils/util";
 import { DateFormat } from "../../DateFormat";
@@ -25,7 +25,7 @@ const getPositionStyle = (allVisible, isLastRow, index) => {
     return allVisible ? { left: '220px' } : { left: '100%' };
   }
 
-  return allVisible && (index + 1) % 7 === 0 ? { right: '220px' } : { right: '100%' }
+  return allVisible && (index + 1) % 7 === 0 ? { right: '240px' } : { right: '100%' }
 };
 
 
@@ -61,6 +61,10 @@ const sortTasks = (tasks) => {
 const useDay = ({ tasks, date, month, daysNumber, index }) => {
   const [operateVisible, setOperateVisible] = useState(false);
   const [allVisible, setAllVisible] = useState(false);
+
+  useEffect(() => {
+    setOperateVisible(false);
+  }, [date]);
 
   const selectedMonth = getMonth(date);
   const isCurrent = month === selectedMonth;

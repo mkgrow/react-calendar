@@ -12,16 +12,6 @@ const Calendar = ({ date, tasks = [], handleChangeState, handleDelete, handleEdi
   const [hoverTask, setHoverTask] = useState({});
   const days = getCalendar(date);
 
-  const onDelete = (task) => {
-    const { id } = task ?? {};
-    console.log('删除', id);
-    handleDelete?.(task)
-  };
-
-  const onChangeActivityActive = (item) => {
-    handleChangeState?.(item)
-  };
-
   const onClick = (task) => {
     setSelectedTask(task);
   };
@@ -34,8 +24,7 @@ const Calendar = ({ date, tasks = [], handleChangeState, handleDelete, handleEdi
   const months = { 当月: currentMonth, 上月: currentMonth - 1, 下月: currentMonth + 1 };
   const year = getYear(date);
 
-  const taskList = formatCalendarData(date, tasks);
-  const monthTasks = taskList.filter(({ start, end }) => start !== -1 || end !== -1);
+  const monthTasks = formatCalendarData(date, months, tasks);
   const currentDay = parseInt(dateToDay(moment()), 10);
   const currentDayIndex = days.findIndex(({ day, month }) => day === currentDay && getMonth() === months[month]);
 
@@ -60,11 +49,11 @@ const Calendar = ({ date, tasks = [], handleChangeState, handleDelete, handleEdi
                 lunar={IDayCn}
                 daysNumber={days.length}
                 currentDayIndex={currentDayIndex}
-                onDelete={onDelete}
+                onDelete={handleDelete}
                 onEdit={handleEdit}
                 onClick={onClick}
                 onHover={onHover}
-                onCancel={onChangeActivityActive}
+                onChangeState={handleChangeState}
               />
             );
           })

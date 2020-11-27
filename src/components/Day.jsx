@@ -7,7 +7,7 @@ import Task from "./Task";
 import List from "./List";
 import styles from "../Calendar.less";
 
-const Day = ({ date, tasks, number, daysNumber = 0, month, day, lunar, index, selectedTask, hoverTask, onClick, onHover, currentDayIndex, onDelete, onEdit, onCancel }) => {
+const Day = ({ date, tasks, number, daysNumber = 0, month, day, lunar, index, selectedTask, hoverTask, onClick, onHover, currentDayIndex, onDelete, onEdit, onChangeState }) => {
   const [props, methods] = useDay({ tasks, date, month, daysNumber, index });
 
   const { dayTask, allVisible, operateVisible, colors, curMonth, isCurrent, daysInMonth } = props;
@@ -61,13 +61,14 @@ const Day = ({ date, tasks, number, daysNumber = 0, month, day, lunar, index, se
   };
 
   const handleCancel = (task) => {
-    onCancel(task)
+    onChangeState(task)
   };
 
   const activeIndex = dayTask.findIndex(i => i?.id === taskId);
   const className = `${styles.child} ${isCurrent ? '' : styles.childDisable}`;
   const status = startAt && endAt && getTaskStatus(isActive, startAt, endAt);
   const isLastRow = daysNumber === 35 && index >= 28 || daysNumber === 42 && index >= 35;
+  const showOperateModal = onEdit || onChangeState || onDelete;
 
   return (
     <div
@@ -111,7 +112,7 @@ const Day = ({ date, tasks, number, daysNumber = 0, month, day, lunar, index, se
         ) : null
       }
       {
-        taskId && operateVisible && dayIndex === index ? (
+        showOperateModal && taskId && operateVisible && dayIndex === index ? (
           <OperateModal
             key={selectedTask?.id}
             task={{ ...selectedTask, status, colors }}
@@ -120,6 +121,9 @@ const Day = ({ date, tasks, number, daysNumber = 0, month, day, lunar, index, se
             onEdit={() => onEdit(taskId)}
             onCancel={handleCancel}
             onDelete={handleDelete}
+            showDeleteBtn={!!onDelete}
+            showEditBtn={!!onEdit}
+            showCancelBtn={!!onChangeState}
           />
         ) : null
       }
