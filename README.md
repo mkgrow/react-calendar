@@ -3,7 +3,7 @@
 
 ### 预览
 
-![日历](http://qkfqvi4uf.hn-bkt.clouddn.com/view.gif)
+![日历](https://github.com/mkgrow/react-calendar/blob/master/view.gif?raw=true)
 
 ### 本地启动
 ```
