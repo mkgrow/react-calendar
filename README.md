@@ -3,7 +3,7 @@
 
 ### 预览
 
-![日历](src/assets/images/view.gif "")
+![日历](http://qkfqvi4uf.hn-bkt.clouddn.com/view.gif)
 
 ### 本地启动
 ```
