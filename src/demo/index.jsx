@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {Modal} from 'antd';
 import moment from "moment";
-import ReactCalendar from '../Calendar';
+import ReactCalendar from 'react-calendar-operate';
 import MonthSwitch from "../components/MonthSwitch";
 import data from "./data";
 
